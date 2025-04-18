@@ -20,13 +20,11 @@ def hello():
 
 @app.route('/api/v1.0/predict')
 def predict():
-    # Pobranie parametrów jako float
     num1 = request.args.get('num1', type=float)
     num2 = request.args.get('num2', type=float)
     if num1 is None or num2 is None:
         return jsonify({'error': 'Brak parametru num1 lub num2'}), 400
 
-    # Prosta reguła decyzyjna
     prediction = 1 if (num1 + num2) > 5.8 else 0
     return jsonify({
         'prediction': prediction,
